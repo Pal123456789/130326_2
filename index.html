@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The Official Guide</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            --card-bg: #ffffff;
+            --primary-text: #2d2a26;
+            --accent-color: #8c2727; /* Deep Spicy Burgundy */
+            --soft-accent: #e8a5a5; /* Soft Rose Gold */
+            --border-color: #f0e6e6;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 20px 10px;
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--primary-text);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .mobile-container {
+            width: 100%;
+            max-width: 420px; /* Perfect for phone screens */
+            background: var(--card-bg);
+            border-radius: 30px;
+            padding: 30px 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative top accent */
+        .mobile-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--soft-accent), var(--accent-color));
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            margin: 0 0 5px 0;
+            letter-spacing: 1px;
+        }
+
+        .tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #7a7a7a;
+        }
+
+        /* Touch-friendly Navigation */
+        nav {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            padding: 12px 5px;
+            border-radius: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #555;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn.active {
+            background: var(--accent-color);
+            color: #fff;
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 10px rgba(140, 39, 39, 0.2);
+        }
+
+        /* Content Sections */
+        .content-area {
+            min-height: 320px;
+        }
+
+        .section {
+            display: none;
+            animation: slideUp 0.4s ease forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .section.show {
+            display: block;
+        }
+
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 18px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--soft-accent);
+            font-size: 0.8rem;
+            top: 2px;
+        }
+
+        li b {
+            display: block;
+            color: var(--primary-text);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .dev-note p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .bday-wish {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            margin-top: 25px;
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.7rem;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="mobile-container">
+    <header>
+        <h1>Anoushka Singh v21.0</h1>
+        <div class="tagline">"Sarcastic, Caring & Highly Confused."</div>
+    </header>
+
+    <nav>
+        <button class="nav-btn active" onclick="showTab(event, 'essentials')">Essentials</button>
+        <button class="nav-btn" onclick="showTab(event, 'guide')">The Guide</button>
+        <button class="nav-btn" onclick="showTab(event, 'quirks')">Glitches</button>
+        <button class="nav-btn" onclick="showTab(event, 'final')">Dev Note</button>
+    </nav>
+
+    <div class="content-area">
+        <div id="essentials" class="section show">
+            <h3>Core Specifications</h3>
+            <ul>
+                <li><b>Mood Engine:</b> Powered by spicy food. If hungry, expect "Chaos Mode" to activate.</li>
+                <li><b>Aesthetic Output:</b> Naturally elegant. Confidence is the only accessory.</li>
+                <li><b>Social Battery:</b> 120-minute capacity in crowds. Irritation levels spike post-limit.</li>
+                <li><b>Compatibility:</b> High affinity for people whose thoughts, feelings, and outlook on life align closely with hers.</li>
+            </ul>
+        </div>
+
+        <div id="guide" class="section">
+            <h3>Interaction Protocol</h3>
+            <ul>
+                <li><b>Listen First:</b> Hear her out first. Once she feels understood, her adorable and playful side naturally appears.</li>
+                <li><b>Silent Apologies:</b> If she’s moody, she knows. She won’t say "sorry" with words, but she will make the conversation so fun you'll forget you were mad.</li>
+                <li><b>A Little Reassurance:</b> Appreciates when she’s reminded that she matters and holds a place in the lives of those she cares about.</li>
+            </ul>
+        </div>
+
+        <div id="quirks" class="section">
+            <h3>Known Glitches</h3>
+            <ul>
+                <li><b>The Disappearing Text:</b> Will delete messages if not replied to instantly. Do not panic; it’s just her little habit.</li>
+		<li><b>Frequent Bug:</b> Displays "I'm fine" message while the system is clearly not fine.</li>
+                <li><b>The Confusion Loop:</b> Struggles with simple daily choices. Requires a patient co-processor to decide things for her.</li>
+                <li><b>Overthinker:</b> Processing speed is high, but occasionally gets stuck on "Past Errors" during bad moods.</li>
+            </ul>
+        </div>
+
+        <div id="final" class="section dev-note">
+            <h3>Developer Note</h3>
+            <p>She’s updating her "Maturity Software" and started understanding who deserves her time. Still confused about some life choices but clearer about who matters. More confidence. Better comebacks. Still forgets self-care.</p>
+            <div class="bday-wish">Happy Birthday! ♥</div>
+	    <p>(Neeche jake parking mein cake rakhi hogi wo le lena)</p>
+        </div>
+    </div>
+
+    <footer>
+        Confidential Page • Dedicated to my favourite little crazy friend.
+    </footer>
+</div>
+
+<script>
+    function showTab(e, id) {
+        let sections = document.querySelectorAll('.section');
+        let btns = document.querySelectorAll('.nav-btn');
+        
+        sections.forEach(s => s.classList.remove('show'));
+        btns.forEach(b => b.classList.remove('active'));
+        
+        document.getElementById(id).classList.add('show');
+        e.currentTarget.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
